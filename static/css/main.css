@@ -1,0 +1,46 @@
+html body {
+    margin: 0 auto;
+    min-height: 100%;
+    min-width: 100%;
+    font-size: 16px;
+    /* overflow: hidden; */
+}
+
+.wrapper {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 27vh;
+    width: 100vw;
+}
+
+#heat-level {
+    font-size: 8rem;
+    font-weight: 900;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10rem;
+}
+
+#slider {
+    margin: 0 auto;
+    height: 20rem !important;
+    overflow: hidden;
+    border: 0;
+}
+#slider .rs-container  {
+    margin: 0 auto;
+}
+#slider .rs-tooltip  {
+    display: none;
+}
+#slider .rs-handle {
+    background-color: #a00000;
+}
+#slider .rs-path-color  {
+    background-color: #f2f2f2;
+}
+#slider .rs-border  {
+    border: 0;
+}
+#slider .rs-range-color  {
+    background-color: #dc0000;
+}
