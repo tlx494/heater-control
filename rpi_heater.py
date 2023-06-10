@@ -312,7 +312,7 @@ atexit.register(gracefully_handle_exit)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, ssl_context='adhoc')
+    app.run(host='0.0.0.0', port=8080)
 
 
 # TODO: beep to a ninth, octave, seventh, etc. based on hand distance when detected.
