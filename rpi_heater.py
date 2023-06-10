@@ -120,12 +120,14 @@ class HeaterControl:
             self.servo_lock.acquire()
             servo_1_delta = datetime.now() - self.servo_last_used[0]
             if servo_1_delta.total_seconds() > self.last_use_limit:
-                print('deactivate servo 1')
+                print('deactivate servo 1 after seconds:',
+                      servo_1_delta.total_seconds())
                 self.pi.set_servo_pulsewidth(self.servo_1, 0)
 
             servo_2_delta = datetime.now() - self.servo_last_used[1]
             if servo_2_delta.total_seconds() > self.last_use_limit:
-                print('deactivate servo 2')
+                print('deactivate servo 2 after seconds:',
+                      servo_2_delta.total_seconds())
                 self.pi.set_servo_pulsewidth(self.servo_2, 0)
             self.servo_lock.release()
             sleep(0.05)
@@ -228,7 +230,9 @@ class HeaterControl:
             self.servo_last_used[1] = datetime.now()
             print(f'Setting dial to {pulsewidth}...')
 
+        self.servo_lock.acquire()
         self.pi.set_servo_pulsewidth(servo_pin, pulsewidth)
+        self.servo_lock.release()
 
     @threaded
     def run_test(self):
