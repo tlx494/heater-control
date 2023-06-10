@@ -120,8 +120,8 @@ class HeaterControl:
             self.servo_lock.acquire()
             servo_1_delta = datetime.now() - self.servo_last_used[0]
             if servo_1_delta.total_seconds() > self.last_use_limit:
-                print('deactivate servo 1 after seconds:',
-                      servo_1_delta.total_seconds())
+                # print('deactivate servo 1 after seconds:',
+                #       servo_1_delta.total_seconds())
                 self.pi.set_servo_pulsewidth(self.servo_1, 0)
 
             servo_2_delta = datetime.now() - self.servo_last_used[1]
