@@ -115,7 +115,7 @@ class HeaterControl:
 
     @threaded
     def deactivate_servos_if_unused(self):
-        # every 50ms, check if either servo has been used for self.last_use_limit. If not, turn off
+        # every 200ms, check if either servo has been used for self.last_use_limit. If not, turn off
         while True:
             self.servo_lock.acquire()
             servo_1_delta = datetime.now() - self.servo_last_used[0]
@@ -126,11 +126,11 @@ class HeaterControl:
 
             servo_2_delta = datetime.now() - self.servo_last_used[1]
             if servo_2_delta.total_seconds() > self.last_use_limit:
-                print('deactivate servo 2 after seconds:',
-                      servo_2_delta.total_seconds())
+                # print('deactivate servo 2 after seconds:',
+                #       servo_2_delta.total_seconds())
                 self.pi.set_servo_pulsewidth(self.servo_2, 0)
             self.servo_lock.release()
-            sleep(0.05)
+            sleep(0.2)
 
     @threaded
     def update_weather_for_current_time(self):
